@@ -1,0 +1,76 @@
+{
+  "data_asset_type": null,
+  "expectation_suite_name": "userdata_suite",
+  "ge_cloud_id": null,
+  "meta": {
+    "citations": [
+      {
+        "batch_request": {
+          "data_asset_name": "userdata1.parquet",
+          "data_connector_name": "default_inferred_data_connector_name",
+          "datasource_name": "userdata_datasource",
+          "limit": 1000
+        },
+        "citation_date": "2022-07-10T20:01:18.023802Z",
+        "comment": "Created suite added via CLI"
+      }
+    ],
+    "great_expectations_version": "0.15.13"
+  },
+  "expectations": [
+    {
+      "meta": {},
+      "expectation_type": "expect_table_columns_to_match_ordered_list",
+      "kwargs": {
+        "column_list": [
+          "registration_dttm",
+          "id",
+          "first_name",
+          "last_name",
+          "email",
+          "gender",
+          "ip_address",
+          "cc",
+          "country",
+          "birthdate",
+          "salary",
+          "title",
+          "comments"
+        ]
+      }
+    },
+    {
+      "meta": {},
+      "expectation_type": "expect_column_values_to_not_be_null",
+      "kwargs": {
+        "column": "cc"
+      }
+    },
+    {
+      "meta": {},
+      "expectation_type": "expect_column_values_to_be_unique",
+      "kwargs": {
+        "column": "id"
+      }
+    },
+    {
+      "meta": {},
+      "expectation_type": "expect_column_distinct_values_to_be_in_set",
+      "kwargs": {
+        "column": "gender",
+        "value_set": [
+          "Female",
+          "Male"
+        ]
+      }
+    },
+    {
+      "meta": {},
+      "expectation_type": "expect_column_values_to_match_strftime_format",
+      "kwargs": {
+        "column": "birthdate",
+        "strftime_format": "%m/%d/%Y"
+      }
+    }
+  ]
+}
